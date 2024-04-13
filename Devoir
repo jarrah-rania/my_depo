@@ -1,0 +1,19 @@
+#!/bin/bash
+
+file_count=$(ls -1 | wc -l)
+
+guess_number() {
+    read -p "Devinez combien de fichiers se trouvent dans le répertoire actuel : " guess
+}
+
+while true; do
+    guess_number
+    if [[ $guess -eq $file_count ]]; then
+        echo "Félicitations ! Vous avez deviné correctement."
+        break
+    elif [[ $guess -lt $file_count ]]; then
+        echo "Trop bas. Essayez encore."
+    else
+        echo "Trop élevé. Essayez encore."
+    fi
+done
